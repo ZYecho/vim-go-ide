@@ -39,7 +39,17 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 ```
 
-### 1.3 Install python and update plugins (Optional)
+### 1.3 Install dependency:
+
+```
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+sudo apt-get install silversearcher-ag
+sudo apt-get install ctags
+```
+
+### 1.4 Install python and update plugins (Optional)
 
 ```
 brew install python3
