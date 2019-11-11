@@ -164,6 +164,9 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 
+"------------------------------------------------------------------------------
+" Tarbar
+"------------------------------------------------------------------------------
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_type_go = {  
     \ 'ctagstype' : 'go',
@@ -192,3 +195,27 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
+
+
+"------------------------------------------------------------------------------
+" fzf
+"------------------------------------------------------------------------------
+set rtp+=~/.fzf
+let g:fzf_layout = {}
+
+" text search with preview
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview('up:60%'), <bang>0)
+
+" ,s to start global search
+nnoremap <Leader>s :Ag!
+
+" files search with preview
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('up:60%'), <bang>0)
+
+" ,f to start files search
+nnoremap <Leader>f :Files<CR>
+
+" ,<tab> to show mapping keys in normal mode
+nmap <leader><tab> <plug>(fzf-maps-n)
